@@ -9,7 +9,7 @@
     width: 70%;
 }
 
-.searchBar:hover{
+.searchBar:hover, .searchBar:focus{
     outline:transparent ;
     box-shadow: 0 0 1px 1px var(--secondary-color);
 }
@@ -35,10 +35,14 @@
     color: var(--gray-300);
 }
 
+.searchBar button{
+    background: transparent;
+}
+
 .iconSearch{
     font-size: 30px;
     border: none;
-    background: var(--primary-color);
+    background: var(--primary-color); 
     color: var(--secondary-color);
 }
 

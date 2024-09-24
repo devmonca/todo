@@ -4,7 +4,6 @@
   --secondary-color: #6C63FF;
   --color-text: #252525;
   --opaque-text:  rgb(37, 37, 37, 0.5);
-
   --highlight: #534CC2;
   --red: #E50000;
   --gray-300: #C3C1E5;
@@ -36,10 +35,6 @@ body{
 
 button, select{
   border: none;
-}
-
-:focus{
-  outline:transparent ;
-  box-shadow: 0 0 1px 1px var(--secondary-color);
+  outline: none;
 }
 

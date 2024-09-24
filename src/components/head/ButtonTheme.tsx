@@ -1,15 +1,18 @@
 import { FiMoon } from "react-icons/fi";
 import { CiSun } from "react-icons/ci";
 import styles from './ButtonTheme.module.css'
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 export function ButtonTheme(){
+
+    const {theme,setTheme} = useContext(ThemeContext)
     const [isLight, setIsLight]= useState(true)
-    const changeBodyStyle = ()=>{
-        document.body.classList.toggle("dark")
-        
+    const toggleTheme = () => {
+        setTheme(theme === "light" ? "dark" : "light") // Alteração aqui
+        setIsLight(!isLight)
     }
     return (
-        <button className={styles.theme} onClick={changeBodyStyle}>
+        <button className={styles.theme} onClick={toggleTheme}>
             {isLight? (
                 <FiMoon size={30} color='white'/>
             ): (

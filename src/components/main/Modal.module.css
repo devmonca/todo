@@ -43,6 +43,11 @@
     margin-bottom: 4rem;
 }
 
+.inputTask:hover, .inputTask:focus{
+    outline:transparent ;
+    box-shadow: 0 0 1px 1px var(--secondary-color);
+}
+
 footer{
     position: absolute;
     bottom: 1rem;
