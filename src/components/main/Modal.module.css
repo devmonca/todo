@@ -1,0 +1,80 @@
+.modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgb(37, 37, 37, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 500px;
+    height: 290px;
+    background: var(--primary-color);
+    border: 1px solid var(--white);
+    border-radius: 16px;
+    padding: 1rem 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container h1{
+    text-align: center;
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+.inputTask{
+    border: 1px solid var(--secondary-color);
+    background: var(--primary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    font-family: "Inter", system-ui;
+    color: var(--secondary-color);
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+footer{
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.decisionBtn{
+    font-family: "Kanit", sans-serif;
+    padding: 4px 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--secondary-color);
+    cursor: pointer;
+    font-size: 1.125rem;
+    width: 110px;
+    height: 38px;
+    font-weight: 600;
+}
+
+.cancel{
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.confirm{
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+@media (max-width: 575.98px) {
+    .container{
+        width: 90%;
+    }
+}

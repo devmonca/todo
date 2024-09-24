@@ -1,0 +1,56 @@
+.taskItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 0;
+    background: var(--primary-color);
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.aboutTask{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.status{
+    font-size: 26px;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+.taskItem p{
+    color: var(--color-text);
+    font-size: 1.25rem;
+    margin-left: 1rem;
+    width:150px;
+}
+
+.options{
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    padding: 0 8px;
+    max-width: 65px;
+}
+
+.optionBtn{
+    background: var(--primary-color);
+    color: var(--gray-300);
+    font-size: 1.275rem;
+    cursor: pointer;
+}
+
+.edit:hover,.edit:active{
+    color: var(--secondary-color);
+}
+
+.delete:hover,.delete:active{
+    color: var(--red);
+}
+
+.complete p{
+    color: var(--opaque-text);
+    text-decoration: line-through;
+}
+
