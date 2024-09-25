@@ -3,14 +3,14 @@ import { GoTrash } from "react-icons/go";
 import styles from './TaskItem.module.css'
 import { ModalContext } from "../../context/ModalEditContext";
 import { useContext } from "react";
-import { ModalEditTask } from "./ModalEditTask";
 export interface TaskType {
     id: string,
     content: string,
     status: boolean
 }
 
-interface TaskProps {
+export interface TaskProps {
+    oldValue: string
     task: TaskType;
     setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
     tasks: TaskType[];
@@ -47,7 +47,7 @@ export function TaskItem({ task, setTasks, tasks }: TaskProps) {
     let oldValue = task.content
 
     return (
-        <div>
+        <>
             <label id={task.id} className={`${styles.taskItem} ${task.status? styles.complete: ''}`}>
                 <div className={styles.aboutTask}>
                     <button onClick={()=>handleModifiedStatus(task.content)}>
@@ -65,10 +65,7 @@ export function TaskItem({ task, setTasks, tasks }: TaskProps) {
                     </button>
                 </div>
             </label>
-            {isOpen? (
-                <ModalEditTask oldValue={task.content}/>
-            ): null}
-        </div>
+        </>
        
     );
 }

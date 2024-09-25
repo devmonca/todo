@@ -9,11 +9,11 @@ import { TaskType } from './components/main/TaskItem'
 import { TaskList } from './components/main/TaskList'
 import { ThemeContext } from './context/ThemeContext'
 import { ModalEditTask } from './components/main/ModalEditTask'
-import { ModalContext } from './context/ModalEditContext'
-
 function App() {
-
   const [openModalAddTask, setOpenModalAddTask] = useState(false)
+  const [openModalEditTask, setOpenModalEditTask] = useState(false)
+  const [taskToEdit, setTaskToEdit] = useState('');
+  const [valueToEdit, setValueToEdit] = useState(null);
   const {theme} = useContext(ThemeContext)
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
   const [filterState, setFilterState] = useState('ALL');
   const [tasks, setTasks] = useState<TaskType[]>([
     {
-      id: 'ssss',
+      id: '1',
       content: 'Pegar a priminha do carlin',
       status: false
     }
@@ -42,6 +42,8 @@ function App() {
 
     return matchesSearch && matchesFilter;
   });
+
+  tasks.forEach(e=>console.log(e))
   return (
     <>
     <div className={`App ${theme === "dark" ? "dark" : ""}`}>
@@ -64,6 +66,15 @@ function App() {
         <ModalAddTask
           isOpen={openModalAddTask}
           setOpenModal={setOpenModalAddTask}
+          tasks={tasks}
+          setTasks={setTasks}
+        />
+        <ModalEditTask
+          oldValue=''
+          isOpen={openModalEditTask}
+          setOpenModal={setOpenModalEditTask}
+          tasks={tasks}
+          setTasks={setTasks}
         />
       </div>
     </div>

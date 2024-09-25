@@ -8,10 +8,11 @@ interface TaskListProps {
 }
 
 export function TaskList({ tasks, setTasks }: TaskListProps) {
+    tasks?.forEach(e=>console.log(e))
     return (
         <div className={styles.list}>
             {tasks?.map(task => (
-                <TaskItem key={task.id} task={task} setTasks={setTasks} tasks={tasks} />
+                <TaskItem key={task.id} oldValue={task.content} task={task} setTasks={setTasks} tasks={tasks} />
             ))}
         </div>
     );
