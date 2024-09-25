@@ -13,6 +13,10 @@
     align-items: center;
 }
 
+.aboutTask button{
+    background: transparent;
+}
+
 .status{
     font-size: 26px;
     background: var(--primary-color);
@@ -23,7 +27,7 @@
     color: var(--color-text);
     font-size: 1.25rem;
     margin-left: 1rem;
-    width:150px;
+    width: auto;
 }
 
 .options{

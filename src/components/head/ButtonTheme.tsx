@@ -3,6 +3,7 @@ import { CiSun } from "react-icons/ci";
 import styles from './ButtonTheme.module.css'
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+
 export function ButtonTheme(){
 
     const {theme,setTheme} = useContext(ThemeContext)
@@ -11,6 +12,7 @@ export function ButtonTheme(){
         setTheme(theme === "light" ? "dark" : "light") // Alteração aqui
         setIsLight(!isLight)
     }
+    
     return (
         <button className={styles.theme} onClick={toggleTheme}>
             {isLight? (

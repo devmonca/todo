@@ -1,22 +1,18 @@
 import { TaskItem } from './TaskItem'
 import styles from './TaskList.module.css'
+import { TaskType } from './TaskItem'
 
-interface Props{
-    hasList: boolean
+interface TaskListProps {
+    tasks?: TaskType[];
+    setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
 }
 
-export function TaskList({hasList}: Props){
-    {hasList && (
+export function TaskList({ tasks, setTasks }: TaskListProps) {
+    return (
         <div className={styles.list}>
-        <img src="../src/assets/detetive.png" alt="" />
-        <p>Empty...</p>
-    </div>
-    )}
-
-    return(
-        <div className={styles.list}>
-            <TaskItem status={false}/>
+            {tasks?.map(task => (
+                <TaskItem key={task.id} task={task} setTasks={setTasks} tasks={tasks} />
+            ))}
         </div>
-    )
-
+    );
 }

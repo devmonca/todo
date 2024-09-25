@@ -3,15 +3,21 @@ import styles from './Filter.module.css'
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 
+interface FilterProps{
+    filterState: string
+    setFilterState: React.Dispatch<React.SetStateAction<string>>;
+}
 
-export function Filter(){
+export function Filter({filterState,setFilterState}: FilterProps){
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('All');
+    const [selectedOption, setSelectedOption] = useState(filterState);
     
     const toggleDropdown = () => setIsOpen(!isOpen)
 
     const handleOptionClick = (option: string)=>{
+        setFilterState(option)
         setSelectedOption(option)
+        console.log(option)
         setIsOpen(false)
     }
     return (
