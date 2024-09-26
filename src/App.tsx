@@ -9,11 +9,12 @@ import { TaskType } from './components/main/TaskItem'
 import { TaskList } from './components/main/TaskList'
 import { ThemeContext } from './context/ThemeContext'
 import { ModalEditTask } from './components/main/ModalEditTask'
+import { ModalContext } from './context/ModalEditContext'
 function App() {
+  const {isOpen} = useContext(ModalContext)
+
   const [openModalAddTask, setOpenModalAddTask] = useState(false)
-  const [openModalEditTask, setOpenModalEditTask] = useState(false)
-  const [taskToEdit, setTaskToEdit] = useState('');
-  const [valueToEdit, setValueToEdit] = useState(null);
+  const [taskToEdit, setTaskToEdit] = useState<TaskType | null>(null);
   const {theme} = useContext(ThemeContext)
 
   useEffect(() => {
@@ -42,8 +43,8 @@ function App() {
 
     return matchesSearch && matchesFilter;
   });
+  console.log(tasks)
 
-  tasks.forEach(e=>console.log(e))
   return (
     <>
     <div className={`App ${theme === "dark" ? "dark" : ""}`}>
@@ -57,7 +58,11 @@ function App() {
           </nav>
         </header>
         <main>
-          <TaskList tasks={filteredTasks} setTasks={setTasks}/>
+          <TaskList
+            setTaskToEdit={setTaskToEdit}
+            tasks={filteredTasks}
+            setTasks={setTasks}
+          />
           <AddTask
             setOpenModal={setOpenModalAddTask}
             openModal={openModalAddTask}
@@ -70,9 +75,7 @@ function App() {
           setTasks={setTasks}
         />
         <ModalEditTask
-          oldValue=''
-          isOpen={openModalEditTask}
-          setOpenModal={setOpenModalEditTask}
+          task={taskToEdit}
           tasks={tasks}
           setTasks={setTasks}
         />

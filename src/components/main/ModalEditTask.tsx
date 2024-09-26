@@ -1,40 +1,43 @@
 import styles from './Modal.module.css'
-import { ChangeEvent, useContext, useState } from 'react'
+import { ChangeEvent, useContext, useState,useEffect } from 'react'
 import { ModalContext } from '../../context/ModalEditContext'
 import { TaskType } from './TaskItem'
 
 interface ModalEditTaskProps{
-    isOpen: boolean
-    setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
     tasks: TaskType[];
     setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
-    oldValue: string
+    task: TaskType | null; 
 }
 
-export function ModalEditTask({ oldValue,tasks,setTasks }: ModalEditTaskProps){
-    const [newValue, setNewValue] = useState(oldValue)
+export function ModalEditTask({ task,tasks,setTasks}: ModalEditTaskProps){
+    if (!task) return null;
+    console.log(task)
     const {isOpen, setIsOpen} = useContext(ModalContext)
+    const [newValue, setNewValue] = useState(task.content)
+    console.log(newValue)
+
     const handleCloseModal = () =>{
         setIsOpen(false)
     }
 
-    function handleEditTask(){
-          const updatedTasks = tasks.map(task => {
-            if (task.content === oldValue) {
-                return { ...task, content: newValue }
-            }
-            return task
-        })
-        setTasks(updatedTasks)
-        handleCloseModal()
-        console.log('Após a edição')
-        tasks.forEach(e=>console.log(e))
+    function handleSave() {
+        const updatedTasks = tasks.map(tarefa =>
+            tarefa.id === task!.id ? { ...tarefa, content: newValue } : tarefa
+        );
+        setTasks(updatedTasks);
+        setIsOpen(false);
     }
 
+    useEffect(() => {
+        if (task) {
+            setNewValue(task.content);  // Atualiza o newValue sempre que a task mudar
+        }
+    }, [task]);
+    
+
     function handleNewValueInput(event: ChangeEvent<HTMLInputElement>){
-        setNewValue(event?.target.value)
+        setNewValue(event.target.value)
     }
-    tasks.forEach(e=>console.log(e))
     if(isOpen){
         return (
             <div className={styles.modal}>
@@ -45,6 +48,7 @@ export function ModalEditTask({ oldValue,tasks,setTasks }: ModalEditTaskProps){
                         className={styles.inputTask}
                         type="text"
                         onChange={handleNewValueInput}
+                        autoFocus
                         />
                     <footer>
                         <button 
@@ -54,7 +58,7 @@ export function ModalEditTask({ oldValue,tasks,setTasks }: ModalEditTaskProps){
                         </button>
                         <button 
                           className={`${styles.decisionBtn} ${styles.confirm}`}
-                          onClick={handleEditTask}>
+                          onClick={handleSave}>
                             SAVE
                         </button>
                     </footer>

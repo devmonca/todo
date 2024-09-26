@@ -39,6 +39,7 @@ export function ModalAddTask({ isOpen,setOpenModal,setTasks }: ModalAddTaskProps
                         type="text"
                         onChange={handleNewTaskChange}
                         value={inputValue}
+                        autoFocus
                     />
                     <footer>
                         <button 

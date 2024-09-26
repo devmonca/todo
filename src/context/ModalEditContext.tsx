@@ -5,7 +5,7 @@ interface ModalContextProps{
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const ModalContext = createContext<ModalContextProps>({
-    isOpen: true,
+    isOpen: false,
     setIsOpen: () => {}, // Função vazia de placeholder
 });
 

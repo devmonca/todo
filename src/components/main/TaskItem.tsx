@@ -10,13 +10,13 @@ export interface TaskType {
 }
 
 export interface TaskProps {
-    oldValue: string
     task: TaskType;
     setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
     tasks: TaskType[];
+    setTaskToEdit: React.Dispatch<React.SetStateAction<TaskType | null>>
 }
 
-export function TaskItem({ task, setTasks, tasks }: TaskProps) {
+export function TaskItem({ task, setTasks, tasks,setTaskToEdit }: TaskProps) {
 
     function handleDeleteTask(textTask: string) {
         if (!setTasks || !tasks) return;  // Verificações de segurança
@@ -36,15 +36,13 @@ export function TaskItem({ task, setTasks, tasks }: TaskProps) {
         setTasks(tasksWithTaskUpdate);
     }
 
-    const {isOpen, setIsOpen} = useContext(ModalContext)
+    const {isOpen,setIsOpen} = useContext(ModalContext)
 
-    const handleOpenModalEdit = (content: string)=>{
-        console.log('clicado')
-        console.log(content)
+    const handleOpenModalEdit = (task: TaskType)=>{
+        setTaskToEdit(task)
         setIsOpen(!isOpen)
     }
 
-    let oldValue = task.content
 
     return (
         <>
@@ -57,7 +55,7 @@ export function TaskItem({ task, setTasks, tasks }: TaskProps) {
                 </div>
                 
                 <div className={styles.options}>
-                    <button onClick={()=>{handleOpenModalEdit(oldValue)}} className={`${styles.optionBtn} ${styles.edit}`}>
+                    <button onClick={()=>{handleOpenModalEdit(task)}} className={`${styles.optionBtn} ${styles.edit}`}>
                         <GoPencil/>
                     </button>
                     <button onClick={()=>handleDeleteTask(task.content)} className={`${styles.optionBtn} ${styles.delete}`}> 
