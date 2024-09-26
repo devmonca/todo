@@ -9,9 +9,7 @@ import { TaskType } from './components/main/TaskItem'
 import { TaskList } from './components/main/TaskList'
 import { ThemeContext } from './context/ThemeContext'
 import { ModalEditTask } from './components/main/ModalEditTask'
-import { ModalContext } from './context/ModalEditContext'
 function App() {
-  const {isOpen} = useContext(ModalContext)
 
   const [openModalAddTask, setOpenModalAddTask] = useState(false)
   const [taskToEdit, setTaskToEdit] = useState<TaskType | null>(null);
