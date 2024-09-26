@@ -1,19 +1,22 @@
-import { useContext, useState, useEffect } from 'react'
 import styles from './App.module.css'
-import { AddTask } from './components/main/AddTask'
-import { ButtonTheme } from './components/head/ButtonTheme'
+import { useContext, useState, useEffect } from 'react'
+import { ThemeContext } from './context/ThemeContext'
 import { Filter } from './components/head/Filter'
+import { ButtonTheme } from './components/head/ButtonTheme'
 import { SearchInput } from './components/head/SearchInput'
+import { AddTask } from './components/main/AddTask'
 import { ModalAddTask } from './components/main/ModalAddTask'
 import { TaskType } from './components/main/TaskItem'
 import { TaskList } from './components/main/TaskList'
-import { ThemeContext } from './context/ThemeContext'
 import { ModalEditTask } from './components/main/ModalEditTask'
+
 function App() {
 
   const [openModalAddTask, setOpenModalAddTask] = useState(false)
   const [taskToEdit, setTaskToEdit] = useState<TaskType | null>(null);
   const {theme} = useContext(ThemeContext)
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterState, setFilterState] = useState('ALL');
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -23,12 +26,10 @@ function App() {
     }
   }, [theme]);
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterState, setFilterState] = useState('ALL');
   const [tasks, setTasks] = useState<TaskType[]>([
     {
       id: '1',
-      content: 'Pegar a priminha do carlin',
+      content: 'Primeira tarefa',
       status: false
     }
   ]);
@@ -41,7 +42,6 @@ function App() {
 
     return matchesSearch && matchesFilter;
   });
-  console.log(tasks)
 
   return (
     <>
@@ -51,7 +51,10 @@ function App() {
           <h1>TODO LIST</h1>
           <nav className={styles.navControl}>
             <SearchInput setSearchTerm={setSearchTerm}/>
-            <Filter filterState={filterState}setFilterState={setFilterState}/>
+            <Filter 
+              filterState={filterState}
+              setFilterState={setFilterState}
+            />
             <ButtonTheme/>
           </nav>
         </header>

@@ -17,7 +17,8 @@ export function TaskList({ tasks, setTasks,setTaskToEdit }: TaskListProps) {
                     setTaskToEdit={(task) => setTaskToEdit(task)}
                     task={task}
                     setTasks={setTasks}
-                    tasks={tasks} />
+                    tasks={tasks}
+                />
             ))}
         </div>
     );

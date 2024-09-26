@@ -8,8 +8,9 @@ export function ButtonTheme(){
 
     const {theme,setTheme} = useContext(ThemeContext)
     const [isLight, setIsLight]= useState(true)
+    
     const toggleTheme = () => {
-        setTheme(theme === "light" ? "dark" : "light") // Alteração aqui
+        setTheme(theme === "light" ? "dark" : "light")
         setIsLight(!isLight)
     }
     

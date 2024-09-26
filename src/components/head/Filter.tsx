@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import styles from './Filter.module.css'
+import { useState } from 'react';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 
@@ -20,6 +20,7 @@ export function Filter({filterState,setFilterState}: FilterProps){
         console.log(option)
         setIsOpen(false)
     }
+    
     return (
         <div className={styles.dropdownContainer}>
             <div className={`${styles.dropdownHeader} ${isOpen? styles.border : ''}`} onClick={toggleDropdown}>
@@ -34,35 +35,32 @@ export function Filter({filterState,setFilterState}: FilterProps){
             {isOpen && (
             <ul className={styles.dropdownList} role="listbox">
                 <li
-                className={`${styles.dropdownOption} ${selectedOption === 'All' ? styles.selected : ''}`}
-                onClick={() => handleOptionClick('ALL')}
-                role="option"
-                aria-selected={selectedOption === 'ALL'}
+                    className={`${styles.dropdownOption} ${selectedOption === 'All' ? styles.selected : ''}`}
+                    onClick={() => handleOptionClick('ALL')}
+                    role="option"
+                    aria-selected={selectedOption === 'ALL'}
                 >
-                All
+                    All
                 </li>
                 <li
-                className={`${styles.dropdownOption} ${selectedOption === 'Complete' ? styles.selected : ''}`}
-                onClick={() => handleOptionClick('Complete')}
-                role="option"
-                aria-selected={selectedOption === 'Complete'}
+                    className={`${styles.dropdownOption} ${selectedOption === 'Complete' ? styles.selected : ''}`}
+                    onClick={() => handleOptionClick('Complete')}
+                    role="option"
+                    aria-selected={selectedOption === 'Complete'}
                 >
-                Complete
+                    Complete
                 </li>
                 <li
-                className={`${styles.dropdownOption} ${selectedOption === 'Incomplete' ? styles.selected : ''}`}
-                onClick={() => handleOptionClick('Incomplete')}
-                role="option"
-                aria-selected={selectedOption === 'Incomplete'}
+                    className={`${styles.dropdownOption} ${selectedOption === 'Incomplete' ? styles.selected : ''}`}
+                    onClick={() => handleOptionClick('Incomplete')}
+                    role="option"
+                    aria-selected={selectedOption === 'Incomplete'}
                 >
-                Incomplete
+                    Incomplete
                 </li>
             </ul>
-                
             )}
-
         </div>
-        
     )
 }
 

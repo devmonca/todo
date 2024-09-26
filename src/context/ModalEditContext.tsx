@@ -6,7 +6,7 @@ interface ModalContextProps{
 }
 export const ModalContext = createContext<ModalContextProps>({
     isOpen: false,
-    setIsOpen: () => {}, // Função vazia de placeholder
+    setIsOpen: () => {},
 });
 
 interface ModalProviderProps{

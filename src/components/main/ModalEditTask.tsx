@@ -11,10 +11,9 @@ interface ModalEditTaskProps{
 
 export function ModalEditTask({ task,tasks,setTasks}: ModalEditTaskProps){
     if (!task) return null;
-    console.log(task)
+    
     const {isOpen, setIsOpen} = useContext(ModalContext)
     const [newValue, setNewValue] = useState(task.content)
-    console.log(newValue)
 
     const handleCloseModal = () =>{
         setIsOpen(false)
@@ -30,10 +29,9 @@ export function ModalEditTask({ task,tasks,setTasks}: ModalEditTaskProps){
 
     useEffect(() => {
         if (task) {
-            setNewValue(task.content);  // Atualiza o newValue sempre que a task mudar
+            setNewValue(task.content);
         }
     }, [task]);
-    
 
     function handleNewValueInput(event: ChangeEvent<HTMLInputElement>){
         setNewValue(event.target.value)

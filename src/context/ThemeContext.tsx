@@ -6,7 +6,7 @@ interface ThemeContextProps{
 }
 export const ThemeContext = createContext<ThemeContextProps>({
     theme: "light",
-    setTheme: () => {}, // Função vazia de placeholder
+    setTheme: () => {},
 });
 
 interface ThemeProviderProps{

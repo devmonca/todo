@@ -60,14 +60,8 @@
     border-radius: 0 0 5px 5px;
 }
 
-.dropdownOption:hover {
-    background-color: var(--gray-100);
-}
-
-.dropdownOption.selected {
-    background-color: var(--gray-100); 
-}
-
+.dropdownOption:hover,
+.dropdownOption.selected,
 .dropdowOption:active {
     background-color: var(--gray-100);
 }

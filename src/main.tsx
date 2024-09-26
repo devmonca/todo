@@ -4,6 +4,7 @@ import App from './App.tsx'
 import './global.css'
 import { ThemeProvider } from './context/ThemeContext.tsx'
 import { ModalProvider } from './context/ModalEditContext.tsx'
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>

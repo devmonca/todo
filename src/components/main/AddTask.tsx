@@ -1,5 +1,5 @@
-import { IoIosAdd } from "react-icons/io";
 import styles from './AddTask.module.css'
+import { IoIosAdd } from "react-icons/io";
 import React from "react";
 
 interface SendProps{
@@ -11,7 +11,6 @@ export function AddTask({setOpenModal, openModal}: SendProps){
     return (
         <button className={styles.btn} onClick={()=>{
             setOpenModal(!openModal)
-            console.log(openModal)
         }}>
             <IoIosAdd className={styles.icon} color="white"/>
         </button>

@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from 'react';
 import styles from './Modal.module.css'
+import { ChangeEvent, useState } from 'react';
 import { TaskType } from './TaskItem'
 
 interface ModalAddTaskProps{
@@ -18,15 +18,15 @@ export function ModalAddTask({ isOpen,setOpenModal,setTasks }: ModalAddTaskProps
     
     const handleCloseModal = () =>{
         setOpenModal(false)
- 
     }
 
     const handleCreateNewTask = ()=>{
-        setTasks((prevTasks)=>[...prevTasks, {id: String(prevTasks.length+1),content: inputValue, status: false}])
+        setTasks((prevTasks)=>[
+            ...prevTasks, {id: String(prevTasks.length+1),content: inputValue, status: false}
+        ])
         handleCloseModal()
         setInputValue('')
     }
-
     
     if(isOpen){
         return (
@@ -54,8 +54,6 @@ export function ModalAddTask({ isOpen,setOpenModal,setTasks }: ModalAddTaskProps
                         </button>
                     </footer>
                 </div>
-                {/* <h1>{content}</h1> */}
-                
             </div>
         )
     }
