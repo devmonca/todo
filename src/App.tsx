@@ -12,11 +12,11 @@ import { ModalEditTask } from './components/main/ModalEditTask'
 
 function App() {
 
-  const [openModalAddTask, setOpenModalAddTask] = useState(false)
-  const [taskToEdit, setTaskToEdit] = useState<TaskType | null>(null);
-  const {theme} = useContext(ThemeContext)
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterState, setFilterState] = useState('ALL');
+  const [openModalAddTask, setOpenModalAddTask] = useState(false) // Define se o modal de adicionar tarefa está ativo
+  const [taskToEdit, setTaskToEdit] = useState<TaskType | null>(null); // Recebe a variável que foi clicada para editar
+  const {theme} = useContext(ThemeContext) // Contexto do Tema atual
+  const [searchTerm, setSearchTerm] = useState(''); // Recebe e muda o termo a ser pesquisado
+  const [filterState, setFilterState] = useState('ALL'); // Filtro das tarefas por padrão ALL
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -35,26 +35,28 @@ function App() {
   ]);
 
   const filteredTasks = tasks.filter(task => {
-    const matchesSearch = task.content.toLowerCase().includes(searchTerm.toLowerCase());
+    // Cria uma nova lista de tasks com o termo pesquisado
+    const matchesSearch = task.content.toLowerCase().includes(searchTerm.toLowerCase()); 
+    // Cria uma nova lista de tasks de acordo com o filtro
     const matchesFilter = filterState === 'ALL' ||
       (filterState === 'Complete' && task.status) ||
       (filterState === 'Incomplete' && !task.status);
 
-    return matchesSearch && matchesFilter;
+    return matchesSearch && matchesFilter; // retorna as tarefas filtradas com a pesquisa
   });
 
   return (
     <>
-    <div className={`App ${theme === "dark" ? "dark" : ""}`}>
+    <div className={theme === "dark" ? "dark" : ""}> 
       <div className={styles.wrapper}>
         <header>
           <h1>TODO LIST</h1>
           <nav className={styles.navControl}>
-            <SearchInput setSearchTerm={setSearchTerm}/>
+            <SearchInput setSearchTerm={setSearchTerm}/> {/*permite definir o termo pesquisado*/}
             <Filter 
-              filterState={filterState}
+              filterState={filterState} 
               setFilterState={setFilterState}
-            />
+            /> {/*filtro atual e função que altera o filtro*/}
             <ButtonTheme/>
           </nav>
         </header>
@@ -63,23 +65,33 @@ function App() {
             setTaskToEdit={setTaskToEdit}
             tasks={filteredTasks}
             setTasks={setTasks}
-          />
+          /> {/*
+            1° envia a permissão de definir qual é a tarefa que deve ir para o ModalEdit
+            2° lista de tarefas
+            3° permissão de setara tarefas
+          */}
           <AddTask
             setOpenModal={setOpenModalAddTask}
             openModal={openModalAddTask}
-          />
+          /> {/*permissão de abrir o modal e saber qual o estado do mesmo*/}
         </main>
         <ModalAddTask
           isOpen={openModalAddTask}
           setOpenModal={setOpenModalAddTask}
           tasks={tasks}
           setTasks={setTasks}
-        />
+        /> {/*
+          1̣° Recebe o estado do modal e permissão de definir o estado
+          2° Recebe a lista de tarefas e a permissão de alterá-la
+        */}
         <ModalEditTask
           task={taskToEdit}
           tasks={tasks}
           setTasks={setTasks}
-        />
+        /> {/*
+          1̣° Recebe a task a editar
+          2° Recebe a lista de tarefas e a permissão de alterá-la
+        */}
       </div>
     </div>
     </>

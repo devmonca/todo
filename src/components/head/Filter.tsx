@@ -4,32 +4,31 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 
 interface FilterProps{
-    filterState: string
-    setFilterState: React.Dispatch<React.SetStateAction<string>>;
+    filterState: string // estado do filtro
+    setFilterState: React.Dispatch<React.SetStateAction<string>>; // define o estado
 }
 
 export function Filter({filterState,setFilterState}: FilterProps){
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(filterState);
+    const [isOpen, setIsOpen] = useState(false); // estado do dropdown
+    const [selectedOption, setSelectedOption] = useState(filterState); // variável auxiliar que vem do App
     
-    const toggleDropdown = () => setIsOpen(!isOpen)
+    const toggleDropdown = () => setIsOpen(!isOpen) // abre e fecha o dropdown
 
-    const handleOptionClick = (option: string)=>{
+    const handleOptionClick = (option: string)=>{ // seleciona o estado do filtro
         setFilterState(option)
         setSelectedOption(option)
-        console.log(option)
         setIsOpen(false)
     }
     
     return (
         <div className={styles.dropdownContainer}>
             <div className={`${styles.dropdownHeader} ${isOpen? styles.border : ''}`} onClick={toggleDropdown}>
-                {selectedOption}
+                {selectedOption} {/*estado do filtro*/}
                 <span>
-                    {isOpen ? (
-                        <IoIosArrowDown className={styles.arrow}/>) : (
-                            <IoIosArrowUp className={styles.arrow}/>
-                        )}
+                    {isOpen ?
+                        (<IoIosArrowDown className={styles.arrow}/>) 
+                        :(<IoIosArrowUp className={styles.arrow}/>)
+                    }
                 </span>
             </div>
             {isOpen && (

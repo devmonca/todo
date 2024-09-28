@@ -4,15 +4,15 @@ import { ModalContext } from '../../context/ModalEditContext'
 import { TaskType } from './TaskItem'
 
 interface ModalEditTaskProps{
-    tasks: TaskType[];
+    tasks: TaskType[]; 
     setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
-    task: TaskType | null; 
+    task: TaskType | null;  
 }
 
 export function ModalEditTask({ task,tasks,setTasks}: ModalEditTaskProps){
-    if (!task) return null;
+    if (!task) return null; // se não tiver task
     
-    const {isOpen, setIsOpen} = useContext(ModalContext)
+    const {isOpen, setIsOpen} = useContext(ModalContext) // estado do modal
     const [newValue, setNewValue] = useState(task.content)
 
     const handleCloseModal = () =>{
@@ -21,7 +21,9 @@ export function ModalEditTask({ task,tasks,setTasks}: ModalEditTaskProps){
 
     function handleSave() {
         const updatedTasks = tasks.map(tarefa =>
-            tarefa.id === task!.id ? { ...tarefa, content: newValue } : tarefa
+            tarefa.id === task!.id ? 
+            { ...tarefa, content: newValue } 
+            : tarefa
         );
         setTasks(updatedTasks);
         setIsOpen(false);
@@ -29,13 +31,14 @@ export function ModalEditTask({ task,tasks,setTasks}: ModalEditTaskProps){
 
     useEffect(() => {
         if (task) {
-            setNewValue(task.content);
+            setNewValue(task.content); // atualiza com o valor da task
         }
     }, [task]);
 
     function handleNewValueInput(event: ChangeEvent<HTMLInputElement>){
         setNewValue(event.target.value)
     }
+    
     if(isOpen){
         return (
             <div className={styles.modal}>

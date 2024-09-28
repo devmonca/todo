@@ -1,8 +1,8 @@
 import styles from './TaskItem.module.css'
-import { GoPencil } from "react-icons/go";
-import { GoTrash } from "react-icons/go";
 import { useContext } from "react";
 import { ModalContext } from "../../context/ModalEditContext";
+import { GoPencil } from "react-icons/go";
+import { GoTrash } from "react-icons/go";
 
 export interface TaskType {
     id: string,
@@ -11,37 +11,35 @@ export interface TaskType {
 }
 
 export interface TaskProps {
-    task: TaskType;
+    task: TaskType; // formato de uma task
     setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
-    tasks: TaskType[];
-    setTaskToEdit: React.Dispatch<React.SetStateAction<TaskType | null>>
+    tasks: TaskType[]; // formato de uma lista de tasks
+    setTaskToEdit: React.Dispatch<React.SetStateAction<TaskType | null>> // definir qual task 
 }
 
 export function TaskItem({ task, setTasks, tasks,setTaskToEdit }: TaskProps) {
 
     function handleDeleteTask(textTask: string) {
-        if (!setTasks || !tasks) return;
+        if (!setTasks || !tasks) return; // se for falsy retorna
         const tasksWithoutTaskRemoved = tasks.filter(tarefa => tarefa.content !== textTask);
-        console.log(tasksWithoutTaskRemoved);
         setTasks(tasksWithoutTaskRemoved);
     }
 
     function handleModifiedStatus(textTask: string) {
         if (!setTasks || !tasks) return;
         const tasksWithTaskUpdate = tasks.map(tarefa =>
-            tarefa.content === textTask? 
-                { ...tarefa, status: !tarefa.status }
+            tarefa.content === textTask ? 
+                { ...tarefa, status: !tarefa.status } // troca o valor booleano da task
                 : tarefa
         );
-        console.log(tasksWithTaskUpdate);
         setTasks(tasksWithTaskUpdate);
     }
 
-    const {isOpen,setIsOpen} = useContext(ModalContext)
+    const {isOpen,setIsOpen} = useContext(ModalContext) // consumindo contexto
 
     const handleOpenModalEdit = (task: TaskType)=>{
-        setTaskToEdit(task)
-        setIsOpen(!isOpen)
+        setTaskToEdit(task) // envia a task que foi clicada
+        setIsOpen(!isOpen) // abre o ModalEdit
     }
 
     return (

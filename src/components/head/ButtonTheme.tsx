@@ -6,16 +6,22 @@ import { ThemeContext } from "../../context/ThemeContext";
 
 export function ButtonTheme(){
 
-    const {theme,setTheme} = useContext(ThemeContext)
+    const {theme,setTheme} = useContext(ThemeContext) // usando as props vindas do contexto
     const [isLight, setIsLight]= useState(true)
     
     const toggleTheme = () => {
-        setTheme(theme === "light" ? "dark" : "light")
+        setTheme(theme === "light" ?
+            "dark" 
+            : "light"
+        )
         setIsLight(!isLight)
     }
     
     return (
-        <button className={styles.theme} onClick={toggleTheme}>
+        <button 
+            className={styles.theme}
+            onClick={toggleTheme}
+        >
             {isLight? (
                 <FiMoon size={30} color='white'/>
             ): (
