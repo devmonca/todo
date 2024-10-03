@@ -50,8 +50,8 @@ export function TaskItem({ task, setTasks, tasks,setTaskToEdit }: TaskProps) {
                         <img 
                             className={styles.status}
                             src={task.status? 
-                            "../src/assets/retangulocheck.svg"
-                            :"../src/assets/retangulovazio.svg"}
+                            "/retangulocheck.svg"
+                            :"/retangulovazio.svg"}
                         />
                     </button>
                     <p>{task.content}</p>

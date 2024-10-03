@@ -33,8 +33,8 @@ export function TaskList({ tasks, setTasks,setTaskToEdit }: TaskListProps) {
     return (
         <div className={styles.found}>
             <img src={theme==='dark'? 
-                "../src/assets/detetivedark.png"
-                : "../src/assets/detetivelight.png"
+                "/detetivedark.png"
+                : "/detetivelight.png"
                 }
                 alt="detetive procurando tarefas"
             />
