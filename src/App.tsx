@@ -1,4 +1,3 @@
-import styles from './App.module.css'
 import { useContext, useState, useEffect } from 'react'
 import { ThemeContext } from './context/ThemeContext'
 import { Filter } from './components/head/Filter'
@@ -48,10 +47,10 @@ function App() {
   return (
     <>
     <div className={theme === "dark" ? "dark" : ""}> 
-      <div className={styles.wrapper}>
+      <div className="my-0 mx-auto max-w-3xl">
         <header>
-          <h1>TODO LIST</h1>
-          <nav className={styles.navControl}>
+          <h1 className='mt-8 mb-6 text-center font-semibold text-2xl'>TODO LIST</h1>
+          <nav className="flex justify-between gap-2">
             <SearchInput setSearchTerm={setSearchTerm}/> {/*permite definir o termo pesquisado*/}
             <Filter 
               filterState={filterState} 

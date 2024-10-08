@@ -1,20 +1,12 @@
 :root{
-  --primary-color: #F7F7F7;
-  --white: #F7F7F7;
-  --secondary-color: #6C63FF;
-  --color-text: #252525;
+  --main-color: #F7F7F7;
+  --text-color: #252525;
   --opaque-text:  rgb(37, 37, 37, 0.5);
-  --highlight: #534CC2;
-  --red: #E50000;
-  --gray-300: #C3C1E5;
-  --gray-100: #e0d4ff;
-  --background-dark-3: rgb(37, 37, 37, 0.3);
-  --background-dark-7: rgb(37, 37, 37, 0.7);
 }
 
 .dark{
-  --primary-color: #252525;
-  --color-text: #F7F7F7;
+  --main-color: #252525;
+  --text-color: #F7F7F7;
   --opaque-text: rgb(255, 255, 255,0.5);
 }
 
@@ -27,8 +19,8 @@
 body{
   font-family: "Kanit", sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--primary-color);
-  color: var(--color-text);
+  background-color: var(--main-color);
+  color: var(--text-color);
   font-size: 16px;
   margin: 16px;
 }
@@ -38,3 +30,6 @@ button, select{
   outline: none;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

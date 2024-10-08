@@ -14,15 +14,21 @@ export function SearchInput({setSearchTerm}: SearchInputProps){
     }
     
     return (
-        <div className={styles.searchBar}>
-            <input 
+        <div className="flex items-center bg-transparent border-secondary border
+        py-0 px-2.5 rounded-md max-w-xl w-3/4 hover:outline-transparent hover:shadow-2 hover:shadow-secondary focus:shadow-2 focus:shadow-secondary">
+            <input
                 type="text"
                 placeholder='Search your task'
                 value={newTextSearch}
-                onChange={handleNewSearch}    
+                onChange={handleNewSearch} 
+                className='border-none outline-none flex-1 py-0 px-2.5
+                text-base rounded-md text-secondary bg-transparent
+                focus:outline-none focus:shadow-none 
+                placeholder:text-gray-300 max-[575px]:w-3/5 md:w-2/4
+                font-inter'
             />
-            <button>
-                < IoSearchOutline className={styles.iconSearch}/>
+            <button className='bg-transparent'>
+                < IoSearchOutline className="border-none text-3xl bg-transparent text-secondary "/>
             </button>
         </div>
     )

@@ -1,4 +1,3 @@
-import styles from './TaskList.module.css'
 import { useContext } from 'react';
 import { ThemeContext } from '../../context/ThemeContext'
 import { TaskItem } from './TaskItem'
@@ -17,7 +16,7 @@ export function TaskList({ tasks, setTasks,setTaskToEdit }: TaskListProps) {
 
     if(hasTask){
         return (
-            <div className={styles.list}>
+            <div className="min-[992px]:py-2.5 min-[992px]:px-20">
             {tasks?.map(task => (
                 <TaskItem
                     key={task.id} 
@@ -31,8 +30,8 @@ export function TaskList({ tasks, setTasks,setTaskToEdit }: TaskListProps) {
         )
     }
     return (
-        <div className={styles.found}>
-            <img src={theme==='dark'? 
+        <div className="flex justify-center">
+            <img className="w-56 h-auto my-8 mx-0" src={theme==='dark'? 
                 "/detetivedark.png"
                 : "/detetivelight.png"
                 }

@@ -1,6 +1,5 @@
 import { FiMoon } from "react-icons/fi";
 import { CiSun } from "react-icons/ci";
-import styles from './ButtonTheme.module.css'
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 
@@ -19,7 +18,8 @@ export function ButtonTheme(){
     
     return (
         <button 
-            className={styles.theme}
+            className="bg-secondary border-none rounded-md p-1 max-h-10 
+            cursor-pointer active:shadow-2 max-[575px]:absolute max-[575px]:top-6 max-[575px]:right-6"
             onClick={toggleTheme}
         >
             {isLight? (

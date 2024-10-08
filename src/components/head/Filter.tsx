@@ -1,4 +1,3 @@
-import styles from './Filter.module.css'
 import { useState } from 'react';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
@@ -21,20 +20,25 @@ export function Filter({filterState,setFilterState}: FilterProps){
     }
     
     return (
-        <div className={styles.dropdownContainer}>
-            <div className={`${styles.dropdownHeader} ${isOpen? styles.border : ''}`} onClick={toggleDropdown}>
+        <div className=" relative inline-block duration-500 font-arial">
+            <div className={`${isOpen? 'border-2 border-secondary' : ''}
+            w-32 duration-500 font-bold bg-secondary
+            text-white border-2 border-secondary
+            py-0 px-1 h-10 text-base min-[992px]:text-lg cursor-pointer rounded-md
+            flex justify-between items-center relative min-[992px]:w-36
+            `} onClick={toggleDropdown}>
                 {selectedOption} {/*estado do filtro*/}
                 <span>
                     {isOpen ?
-                        (<IoIosArrowDown className={styles.arrow}/>) 
-                        :(<IoIosArrowUp className={styles.arrow}/>)
+                        (<IoIosArrowDown className="mr-1 transition-opacity duration-500 ease-in-out"/>) 
+                        :(<IoIosArrowUp className="mr-1 transition-opacity duration-500 ease-in-out"/>)
                     }
                 </span>
             </div>
             {isOpen && (
-            <ul className={styles.dropdownList} role="listbox">
+            <ul className="duration-500 absolute bg-white border border-secondary rounded-s w-full z-50 p-0 list-none mt-0.5" role="listbox">
                 <li
-                    className={`${styles.dropdownOption} ${selectedOption === 'All' ? styles.selected : ''}`}
+                    className={`p-1 text-base text-secondary cursor-pointer hover:bg-gray-100 active:bg-gray-100 ${selectedOption === 'All' ? 'bg-gray-100' : ''}`}
                     onClick={() => handleOptionClick('ALL')}
                     role="option"
                     aria-selected={selectedOption === 'ALL'}
@@ -42,7 +46,7 @@ export function Filter({filterState,setFilterState}: FilterProps){
                     All
                 </li>
                 <li
-                    className={`${styles.dropdownOption} ${selectedOption === 'Complete' ? styles.selected : ''}`}
+                    className={`p-1 text-base text-secondary cursor-pointer hover:bg-gray-100 active:bg-gray-100 ${selectedOption === 'Complete' ? 'bg-gray-100' : ''}`}
                     onClick={() => handleOptionClick('Complete')}
                     role="option"
                     aria-selected={selectedOption === 'Complete'}
@@ -50,7 +54,7 @@ export function Filter({filterState,setFilterState}: FilterProps){
                     Complete
                 </li>
                 <li
-                    className={`${styles.dropdownOption} ${selectedOption === 'Incomplete' ? styles.selected : ''}`}
+                    className={`p-1 text-base text-secondary cursor-pointer hover:bg-gray-100 active:bg-gray-100 ${selectedOption === 'Incomplete' ? 'bg-gray-100' : ''}`}
                     onClick={() => handleOptionClick('Incomplete')}
                     role="option"
                     aria-selected={selectedOption === 'Incomplete'}
