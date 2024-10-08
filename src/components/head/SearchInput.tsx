@@ -1,4 +1,3 @@
-import styles from './SearchInput.module.css'
 import { ChangeEvent, useState } from 'react';
 import { IoSearchOutline } from "react-icons/io5";
 
