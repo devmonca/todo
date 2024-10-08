@@ -16,15 +16,6 @@
   box-sizing: border-box;
 }
 
-body{
-  font-family: "Kanit", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  background-color: var(--main-color);
-  color: var(--text-color);
-  font-size: 16px;
-  margin: 16px;
-}
-
 button, select{
   border: none;
   outline: none;
